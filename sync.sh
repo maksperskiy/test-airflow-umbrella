@@ -1,7 +1,6 @@
 git submodule update --recursive --remote --init
 
 while IFS= read -r line; do
-    # Extract the values using cut
     repo=$(echo "$line" | cut -d ' ' -f 1)
     path=$(echo "$line" | cut -d ' ' -f 2)
 
