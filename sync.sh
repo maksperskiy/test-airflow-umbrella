@@ -12,7 +12,7 @@ done < submodules
 
 if [[ `git status --porcelain` ]]; then
   echo "The code has been changed!"
-#   git add .
-#   git commit -m "Code update"
-#   git push
+  git add .
+  git commit -m "Code update"
+  git push
 fi
