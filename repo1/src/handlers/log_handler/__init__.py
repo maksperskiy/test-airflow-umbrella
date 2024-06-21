@@ -2,7 +2,7 @@ import os
 import re
 from datetime import datetime, timedelta
 
-from src.dags import Environment
+from ...dags import Environment
 
 
 def clean_logs():

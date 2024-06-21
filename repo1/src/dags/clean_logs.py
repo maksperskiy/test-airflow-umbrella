@@ -3,9 +3,9 @@ from datetime import timedelta
 import pendulum
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from src.handlers.log_handler import clean_logs
+from ..handlers.log_handler import clean_logs
 
-from src.dags import Environment
+from ..dags import Environment
 
 
 with DAG(
@@ -21,4 +21,4 @@ with DAG(
         task_id="clean_logs", python_callable=clean_logs
     )
     clean_logs_operator
-    # Test commit
+    # Test commit 2
