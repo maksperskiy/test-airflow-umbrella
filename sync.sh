@@ -16,7 +16,6 @@ while IFS= read -r line; do
         git clone -b $branch $repo $name-tmp
 
         mkdir -p modules
-        mkdir -p $name
         cp -r $name-tmp/$path ./modules/$name/ 
         rm -rf $name-tmp
 
