@@ -5,7 +5,8 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 
 import sys
-sys.path.insert(0,"./dags")
+sys.path.insert(0,__file__[:__file__.rfind("dags") + len("dags")])
+
 from dags.handlers.log_handler import clean_logs
 
 from dags.config import Environment
