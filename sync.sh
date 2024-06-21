@@ -1,9 +1,9 @@
-git submodule update --recursive --remote --init
 
 while IFS= read -r line; do
     repo=$(echo "$line" | cut -d ' ' -f 1)
     path=$(echo "$line" | cut -d ' ' -f 2)
 
+    git submodule update --recursive --remote --init $repo
     mkdir -p $repo
     cp -r $repo-tmp/$path ./$repo/ 
     rm -rf $repo-tmp
