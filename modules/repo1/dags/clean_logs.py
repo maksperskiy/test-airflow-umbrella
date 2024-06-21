@@ -9,9 +9,9 @@ import sys
 dag_folder = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, dag_folder)
 
-from dags.handlers.log_handler import clean_logs
+from handlers.log_handler import clean_logs
 
-from dags.config import Environment
+from config import Environment
 
 
 with DAG(
