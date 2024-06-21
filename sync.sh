@@ -36,8 +36,8 @@ while IFS= read -r line; do
 done < $FILE
 
 if [[ `git status --porcelain` ]]; then
-  echo "The code has been changed successfully!"
   git add .
   git commit -m "Code update"
   git push
+  echo "The code has been changed successfully!"
 fi
