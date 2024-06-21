@@ -8,7 +8,7 @@ from airflow.operators.python import PythonOperator
 # from src.dags import Environment
 
 
-def clean_logs(context: Context):
+def clean_logs(context):
     """Parse task context."""
     task = context["task_instance"]
     print(context["task_instance"])
