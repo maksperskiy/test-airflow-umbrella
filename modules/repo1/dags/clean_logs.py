@@ -4,13 +4,9 @@ import pendulum
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-raise Exception(str(__file__)+"||||"+str(__file__[:__file__.rfind("dags") + len("dags")]))
-import sys
-sys.path.insert(0,__file__[:__file__.rfind("dags") + len("dags")])
+from .handlers.log_handler import clean_logs
 
-from dags.handlers.log_handler import clean_logs
-
-from dags.config import Environment
+from .config import Environment
 
 
 with DAG(
