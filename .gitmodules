@@ -1,4 +1,0 @@
-[submodule "repo1"]
-	path = repo1-tmp
-	url = git@github.com:maksperskiy/test-airflow-dags-repo.git
-	branch = main

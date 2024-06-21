@@ -1,17 +1,10 @@
-1. Add submodule 
-```sh
-git submodule add --name {MODULENAME} --branch {BRANCH} {REPOSITORY} {MODULENAME}-tmp
+1. Add submodule name and path to terget folder in "submodules.cfg" file
 ```
-
-2. Add submodule name and path to terget folder in "submodules" file
-```
-{MODULENAME} {TARGET_PATH}
+{MODULENAME} {BRANCH} {NAME} {TARGET_PATH}
 # empty line
 ```
 
-To remove submodule use
+To remove submodule remove if from the "submodules.cfg" use
 ```sh
-git submodule deinit -f {MODULENAME}
-git rm -f {MODULENAME}
-rm -rf .git/modules/{MODULENAME}
+rm -rf {MODULENAME}
 ```
