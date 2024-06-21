@@ -3,9 +3,9 @@ from datetime import timedelta
 import pendulum
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from ..handlers.log_handler import clean_logs
+from src.handlers.log_handler import clean_logs
 
-from ..dags import Environment
+from src.dags import Environment
 
 
 with DAG(
