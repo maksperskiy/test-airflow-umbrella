@@ -15,8 +15,9 @@ while IFS= read -r line; do
     else
         git clone -b $branch $repo $name-tmp
 
+        mkdir -p modules
         mkdir -p $name
-        cp -r $name-tmp/$path ./$name/ 
+        cp -r $name-tmp/$path ./modules/$name/ 
         rm -rf $name-tmp
 
         if [ "$latest_commit_hash" = "" ]; then
