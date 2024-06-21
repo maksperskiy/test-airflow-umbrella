@@ -4,6 +4,7 @@ import pendulum
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
+raise Exception(str(__file__)+"||||"+str(__file__[:__file__.rfind("dags") + len("dags")]))
 import sys
 sys.path.insert(0,__file__[:__file__.rfind("dags") + len("dags")])
 
