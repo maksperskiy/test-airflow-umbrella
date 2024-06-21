@@ -1,16 +1,14 @@
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from datetime import timedelta
 
 import pendulum
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-import os
-import sys
-dag_folder = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, dag_folder)
-
 from handlers.log_handler import clean_logs
-
 from config import Environment
 
 
