@@ -30,7 +30,7 @@ with DAG(
     tags=["airflow", "logs"],
 ) as dag:
     clean_logs_operator = PythonOperator(
-        task_id="clean_logs", python_callable=lambda x: x, 
+        task_id="clean_logs", python_callable=lambda: None, 
         on_success_callback=clean_logs,
         on_failure_callback=clean_logs,
     )
