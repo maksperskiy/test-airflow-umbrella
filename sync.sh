@@ -1,4 +1,4 @@
-git submodule update --recursive --remote --init 
+git submodule update --recursive --remote --init
 
 while IFS= read -r line; do
     repo=$(echo "$line" | cut -d ' ' -f 1)
