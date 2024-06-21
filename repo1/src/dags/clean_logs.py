@@ -8,7 +8,7 @@ from airflow.operators.python import PythonOperator
 # from src.dags import Environment
 
 
-def clean_logs(context: Context) -> Dict[str, Any]:
+def clean_logs(context: Context):
     """Parse task context."""
     task = context["task_instance"]
     print(context["task_instance"])
@@ -23,7 +23,7 @@ def clean_logs(context: Context) -> Dict[str, Any]:
 with DAG(
     dag_id="clean_logs",
     description="Clean log for a period",
-    schedule_interval=timedelta(days=float(Environment.LOG_DURATION)),
+    # schedule_interval=timedelta(days=float(Environment.LOG_DURATION)),
     start_date=pendulum.datetime(2022, 5, 24, tz="UTC"),
     end_date=None,
     catchup=False,
