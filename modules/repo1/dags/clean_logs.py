@@ -4,9 +4,11 @@ import pendulum
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-from handlers.log_handler import clean_logs
+import sys
+sys.path.insert(0,"./dags")
+from dags.handlers.log_handler import clean_logs
 
-from config import Environment
+from dags.config import Environment
 
 
 with DAG(
