@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: run-umbrella-sync-script
+  name: run-umbrella-git-sync
 spec:
   schedule: "0 * * * *"  # Runs at the top of every hour
   jobTemplate:
@@ -9,8 +9,8 @@ spec:
       template:
         spec:
           containers:
-          - name: umbrella-sync-script
-            image: your-docker-repo/your-script:latest # set image
+          - name: umbrella-git-sync
+            image: {registry}/umbrella-git-sync:latest
             imagePullPolicy: IfNotPresent
             command: ["./sync.sh"]
           restartPolicy: Never

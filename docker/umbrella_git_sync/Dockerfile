@@ -1,13 +1,27 @@
-ARG UMBRELLA_REPOSITORY="ssh://git@gitlab.intexsoft.by:222/<umbrella_repository>.git"
+FROM alpine
 
-FROM alpine/git:latest
+RUN apk update && \
+    apk add --update git && \
+    apk add --update openssh
 
-RUN $UMBRELLA_REPOSITORY_SSH_KEY > /root/.ssh/id_ed25519
+RUN mkdir -p /root/.ssh
 
-WORKDIR /opt/
-RUN git clone ${UMBRELLA_REPOSITORY} umbrella
+ARG UMBRELLA_REPOSITORY_SSH_KEY
+RUN echo "${UMBRELLA_REPOSITORY_SSH_KEY}" > /root/.ssh/id_rsa
+RUN chmod -R 600 /root/.ssh/
+
+ARG GIT_REMOTE
+RUN ssh-keyscan -t rsa $GIT_REMOTE >> /root/.ssh/known_hosts
+
+RUN echo "IdentityFile /root/.ssh/id_rsa" >> /etc/ssh/ssh_config
+RUN echo -e "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+
+
+ARG UMBRELLA_REPOSITORY
+RUN git clone $UMBRELLA_REPOSITORY /opt/umbrella
+
 WORKDIR /opt/umbrella
 
-RUN chmod +x /your-script.sh
+RUN chmod +x ./sync.sh
 
 ENTRYPOINT ["./sync.sh"]
