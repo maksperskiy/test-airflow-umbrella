@@ -1,4 +1,4 @@
-FILE=submodules.cfg
+FILE=modules.cfg
 row_number=0
 while IFS= read -r line; do
     row_number=$(echo $row_number + 1 | bc)

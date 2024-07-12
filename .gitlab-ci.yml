@@ -1,0 +1,26 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  IMAGE_NAME: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+
+# Build Docker image
+build:
+  stage: build
+  script:
+    - docker build -t $IMAGE_NAME .
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker push $IMAGE_NAME
+  only:
+    changes:
+      - docker/airflow/*
+
+# Deploy with Helm
+deploy:
+  stage: deploy
+  script:
+    - helm upgrade --install custom-airflow helm-chart --set image.repository=$CI_REGISTRY_IMAGE --set image.tag=$CI_COMMIT_REF_SLUG
+  only:
+    changes:
+      - docker/airflow/*
